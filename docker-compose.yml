@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    container_name: postgres_db
+    restart: unless-stopped
+    env_file:
+      - docker.env
+    ports:
+      - '1234:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+    driver: local
+
